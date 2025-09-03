@@ -22,7 +22,11 @@ public class InputManager : NetworkBehaviour
         look = GetComponent<PlayerLook>();
         onFoot.Jump.performed += ctx => motor.Jump();
     }*/
-    private void Start()
+    /*private void Start()
+    {
+        PlayerInitizalize();
+    }*/
+    public override void OnNetworkSpawn()
     {
         PlayerInitizalize();
     }
@@ -52,12 +56,12 @@ public class InputManager : NetworkBehaviour
     }
     private void OnEnable()
     {
-        //if (IsOwner)
+        if (IsOwner)
         onFoot.Enable();
     }
     private void OnDisable()
     {
-        //if (IsOwner)
+        if (IsOwner)
         onFoot.Disable();
     }
 }
